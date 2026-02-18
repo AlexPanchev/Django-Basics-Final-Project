@@ -30,6 +30,12 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+PROJECT_APPS =[
+    'desserts',
+    'core',
+    'orders'
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+] + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,9 +81,13 @@ WSGI_APPLICATION = 'Django_Basics_Final_Project.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "final_project_db",
+        "USER": "postgres",
+        "PASSWORD": "PostgrePass.1",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
