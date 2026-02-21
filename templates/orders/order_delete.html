@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Delete Order #{{ order.pk }}</h1>
+
+<p>Are you sure you want to delete this order?</p>
+
+<ul>
+    <li><strong>Customer:</strong> {{ order.customer_name }}</li>
+    <li><strong>Status:</strong> {{ order.status }}</li>
+    <li><strong>Total:</strong> {{ order.total_price }} lv</li>
+</ul>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-sm">Yes, delete</button>
+    <a href="{% url 'order_detail' order.pk %}" class="btn btn-primary btn-sm">Cancel</a>
+</form>
+{% endblock %}

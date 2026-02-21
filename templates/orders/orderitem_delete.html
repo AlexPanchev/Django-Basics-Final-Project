@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Delete Item</h1>
+
+<p>Are you sure you want to delete:</p>
+
+<p>
+    {{ item.quantity }} × {{ item.dessert.name }}  
+    ({{ item.unit_price }} lv each)
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-sm">Yes, delete</button>
+    <a href="{% url 'order_detail' item.order.pk %}" class="btn btn-primary btn-sm">Cancel</a>
+</form>
+{% endblock %}

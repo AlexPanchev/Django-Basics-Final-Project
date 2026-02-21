@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Order #{{ order.pk }}</h1>
+
+<h2>Customer Information</h2>
+<p><strong>Name:</strong> {{ order.customer_name }}</p>
+<p><strong>Phone:</strong> {{ order.customer_phone }}</p>
+<p><strong>Email:</strong> {{ order.customer_email }}</p>
+<p><strong>Status:</strong> {{ order.status }}</p>
+<p><strong>Notes:</strong> {{ order.notes }}</p>
+
+<h2>Items</h2>
+<ul>
+    {% for item in order.items.all %}
+        <li>
+            {{ item.quantity }} × {{ item.dessert.name }}
+            @ {{ item.unit_price }} lv =
+            <strong>{{ item.line_total }} lv</strong>
+
+            <!-- Item actions -->
+            <span style="margin-left: 10px;">
+                <a href="{% url 'orderitem_update' item.pk %}" class="btn btn-primary btn-sm">Edit</a> |
+                <a href="{% url 'orderitem_delete' item.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </span>
+        </li>
+    {% empty %}
+        <li>No items yet.</li>
+    {% endfor %}
+</ul>
+
+<p><strong>Total:</strong> {{ order.total_price }} lv</p>
+
+<h2>Order Actions</h2>
+<ul>
+    <li><a href="{% url 'orderitem_create' order.pk %}" class="btn btn-primary btn-sm">Add Item</a></li>
+    <li><a href="{% url 'order_update' order.pk %}" class="btn btn-primary btn-sm">Edit Order</a></li>
+    <li><a href="{% url 'order_delete' order.pk %}" class="btn btn-danger btn-sm">Delete Order</a></li>
+</ul>
+
+{% endblock %}

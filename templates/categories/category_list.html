@@ -8,7 +8,7 @@
 <ul>
     {% for category in categories %}
         <li>
-            <a href="{% url 'category_detail' category.pk %}">
+            <a href="{% url 'category_detail' category.pk %}" >
                 {{ category.name }}
             </a>
         </li>
@@ -17,5 +17,5 @@
     {% endfor %}
 </ul>
 
-<a href="{% url 'category_create' %}">Add Category</a>
+<a href="{% url 'category_create' %}" class="btn btn-success ">Add Category</a>
 {% endblock %}

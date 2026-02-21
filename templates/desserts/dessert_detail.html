@@ -24,6 +24,6 @@
 
 <p><strong>Available:</strong> {{ dessert.is_available|yesno:"Yes,No" }}</p>
 
-<a href="{% url 'dessert_edit' dessert.pk %}">Edit</a> |
-<a href="{% url 'dessert_delete' dessert.pk %}">Delete</a>
+<a href="{% url 'dessert_edit' dessert.pk %}" class="btn btn-primary btn-sm">Edit</a> |
+<a href="{% url 'dessert_delete' dessert.pk %}" class="btn btn-danger btn-sm">Delete</a>
 {% endblock %}

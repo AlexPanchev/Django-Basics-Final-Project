@@ -5,7 +5,7 @@ from .models import Order, OrderItem
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ["customer_name", "customer_phone", "customer_email", "status"]
+        fields = ["customer_name", "customer_phone", "customer_email", "status", "notes"]
 
     labels = {
         "customer_name": "Customer Name",
