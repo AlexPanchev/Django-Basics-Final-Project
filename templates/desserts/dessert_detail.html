@@ -1,0 +1,25 @@
+<h1>{{ dessert.name }}</h1>
+
+{% if dessert.image %}
+    <img src="{{ dessert.image.url }}" alt="{{ dessert.name }}" style="max-width: 300px;">
+{% endif %}
+
+<p><strong>Description:</strong> {{ dessert.description }}</p>
+<p><strong>Price:</strong> {{ dessert.price }} lv</p>
+<p><strong>Category:</strong> {{ dessert.category.name }}</p>
+
+<h3>Ingredients:</h3>
+<ul>
+    {% for ingredient in dessert.ingredients.all %}
+        <li>{{ ingredient.name }}</li>
+    {% empty %}
+        <li>No ingredients listed.</li>
+    {% endfor %}
+</ul>
+
+<p><strong>Available:</strong> {{ dessert.is_available|yesno:"Yes,No" }}</p>
+
+<a href="{% url 'dessert_edit' dessert.pk %}">Edit</a> |
+<a href="{% url 'dessert_delete' dessert.pk %}">Delete</a>
+
+<a href="{% url 'dessert_list' %}">Back to all desserts</a>

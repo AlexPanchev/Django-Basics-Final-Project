@@ -1,0 +1,13 @@
+<h1>Desserts</h1>
+
+<ul>
+    {% for dessert in desserts %}
+        <li>
+            <a href="{% url 'dessert_detail' dessert.id %}">
+                {{ dessert.name }} - {{ dessert.price }} lv
+            </a>
+        </li>
+    {% empty %}
+        <li>No desserts available.</li>
+    {% endfor %}
+</ul>
