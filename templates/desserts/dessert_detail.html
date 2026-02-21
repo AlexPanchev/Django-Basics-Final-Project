@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}{{ dessert.name }}{% endblock %}
+
+{% block content %}
 <h1>{{ dessert.name }}</h1>
 
 {% if dessert.image %}
@@ -21,5 +26,4 @@
 
 <a href="{% url 'dessert_edit' dessert.pk %}">Edit</a> |
 <a href="{% url 'dessert_delete' dessert.pk %}">Delete</a>
-
-<a href="{% url 'dessert_list' %}">Back to all desserts</a>
+{% endblock %}

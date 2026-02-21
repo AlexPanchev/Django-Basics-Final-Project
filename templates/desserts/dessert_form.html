@@ -1,16 +1,13 @@
-<h1>
-    {% if dessert %}
-        Edit {{ dessert.name }}
-    {% else %}
-        Add a New Dessert
-    {% endif %}
-</h1>
+{% extends "base.html" %}
 
+{% block title %}Dessert Form{% endblock %}
+
+{% block content %}
+<h1>Dessert Form</h1>
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Save</button>
 </form>
-
-<a href="{% url 'dessert_list' %}">Back to all desserts</a>
+{% endblock %}

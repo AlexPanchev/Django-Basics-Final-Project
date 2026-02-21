@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Dessert{% endblock %}
+
+{% block content %}
 <h1>Delete Dessert</h1>
 
 <p>Are you sure you want to delete "{{ dessert.name }}"?</p>
@@ -7,3 +12,4 @@
     <button type="submit">Yes, delete</button>
     <a href="{% url 'dessert_detail' dessert.pk %}">Cancel</a>
 </form>
+{% endblock %}
