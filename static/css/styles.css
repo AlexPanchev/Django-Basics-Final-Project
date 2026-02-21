@@ -4,6 +4,7 @@
     background: url('https://wallpapers.com/images/hd/assorted-cakes-and-cookies-dessert-s3nugcazto0oqwru.jpg')
                 center/cover no-repeat;
     position: relative;
+
 }
 .hero-banner::before {
     content: "";
@@ -81,8 +82,12 @@ footer {
     font-weight: 600;
     text-align: left;
     margin-bottom: 2rem;
-    color: #e0cfbe;
+    color: #444a45;
 }
+.quick-access-section .quick-access-title {
+    color: #e0cfbe !important;   /* beige text on dark background */
+}
+
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
@@ -182,14 +187,14 @@ main.container {
     color: #e0cfbe !important;
 }
 
-.dessert-details-box {
-    background-color: #444a45;
-    color: #e0cfbe;
-    border-radius: 12px;
-    height: 100%;
+/*.dessert-details-box {*/
+/*    background-color: #444a45;*/
+/*    color: #e0cfbe;*/
+/*    border-radius: 12px;*/
+/*    height: 100%;*/
 
 
-}
+/*}*/
 
 .dessert-details-box h2,
 .dessert-details-box h4,
@@ -284,4 +289,97 @@ main.container {
 .delete-box p,
 .delete-box strong {
     color: #e0cfbe !important;
+}
+
+
+.dessert-detail-wrapper {
+    display: flex;
+    gap: 2rem;
+}
+
+
+.dessert-detail-left,
+.dessert-detail-right {
+    flex: 1;
+}
+
+.dessert-details-box {
+    background-color: #444a45;
+    color: #e0cfbe;
+    border-radius: 12px;
+    padding: 2rem;
+    height: 100%;
+
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dessert-detail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.dessert-detail-left {
+    display: flex;
+}
+
+.dessert-detail-img {
+    flex: 1;
+}
+
+.category-card {
+    background-color: #444a45;
+    color: #e0cfbe;
+    border-radius: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+}
+
+.category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.category-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.category-description-box {
+    background-color: #444a45;
+    color: #e0cfbe;
+    border-radius: 12px;
+}
+
+.category-form-box {
+    background-color: #444a45;
+    color: #e0cfbe;
+    border-radius: 12px;
+}
+
+.category-form-box label {
+    color: #e0cfbe !important;
+    font-weight: 500;
+}
+
+.category-form-box input,
+.category-form-box textarea {
+    background-color: #e0cfbe;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.category-form-box input:focus,
+.category-form-box textarea:focus {
+    outline: 2px solid #d4c2b0;
+    background-color: #f3e8dc;
 }

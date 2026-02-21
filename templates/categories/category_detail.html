@@ -1,25 +1,56 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% load dessert_filters %}
 {% block title %}{{ category.name }}{% endblock %}
 
 {% block content %}
-<h1>{{ category.name }}</h1>
+<div class="container py-5">
 
-<p>{{ category.description }}</p>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="quick-access-title m-0">{{ category.name }}</h1>
 
-<h3>Desserts in this category:</h3>
-<ul>
-    {% for dessert in category.desserts.all %}
-        <li>
-            <a href="{% url 'dessert_detail' dessert.pk %}">
-                {{ dessert.name }}
-            </a>
-        </li>
-    {% empty %}
-        <li>No desserts in this category.</li>
-    {% endfor %}
-</ul>
+        <div class="d-flex gap-3">
+            <a href="{% url 'category_update' category.pk %}" class="btn btn-green btn-lg">Edit</a>
+            <a href="{% url 'category_delete' category.pk %}" class="btn btn-green btn-lg">Delete</a>
+        </div>
+    </div>
 
-<a href="{% url 'category_update' category.pk %}" class="btn btn-primary btn-sm">Edit</a> |
-<a href="{% url 'category_delete' category.pk %}" class="btn btn-danger btn-sm">Delete</a>
+    <div class="category-description-box p-4 rounded shadow mb-5">
+        {% if category.description %}
+            <p class="mb-0">{{ category.description }}</p>
+        {% else %}
+            <p class="mb-0 text-muted">No description provided for this category.</p>
+        {% endif %}
+    </div>
+
+    <h2 class="quick-access-title mb-4">Desserts in this Category</h2>
+
+    <div class="row g-4">
+        {% for dessert in category.desserts.all %}
+        <div class="col-md-4 col-lg-3">
+            <div class="card dessert-card h-100">
+
+                {% if dessert.image %}
+                    <img src="{{ dessert.image.url }}" class="dessert-card-img" alt="{{ dessert.name }}">
+                {% else %}
+                    <img src="{% static 'img/no-image.jpg' %}" class="dessert-card-img" alt="No image">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ dessert.name }}</h5>
+                    <p class="card-text text-muted mb-2">{{ dessert.price|euro }}</p>
+
+                    <a href="{% url 'dessert_detail' dessert.pk %}" class="btn btn-green btn-lg">
+                        View Details
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">No desserts in this category yet.</p>
+        {% endfor %}
+    </div>
+
+</div>
 {% endblock %}

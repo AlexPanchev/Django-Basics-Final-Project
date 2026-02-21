@@ -12,43 +12,43 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
-            <!-- Name -->
+
             <div class="mb-3">
                 <label class="form-label">Dessert Name:</label>
                 {{ form.name }}
             </div>
 
-            <!-- Description -->
+
             <div class="mb-3">
                 <label class="form-label">Dessert Description:</label>
                 {{ form.description }}
             </div>
 
-            <!-- Price -->
+
             <div class="mb-3">
                 <label class="form-label">Dessert Price (€):</label>
                 {{ form.price }}
             </div>
 
-            <!-- Image -->
+
             <div class="mb-3">
                 <label class="form-label">Dessert Image:</label>
                 {{ form.image }}
             </div>
 
-            <!-- Availability -->
+
             <div class="mb-3 form-check">
                 {{ form.is_available }}
                 <label class="form-check-label">Available</label>
             </div>
 
-            <!-- Category -->
+
             <div class="mb-3">
                 <label class="form-label">Dessert Category:</label>
                 {{ form.category }}
             </div>
 
-            <!-- Ingredients -->
+
             <div class="mb-3">
                 <label class="form-label">Ingredients Used:</label>
                 {{ form.ingredients }}

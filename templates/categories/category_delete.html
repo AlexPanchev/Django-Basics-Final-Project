@@ -3,13 +3,21 @@
 {% block title %}Delete Category{% endblock %}
 
 {% block content %}
-<h1>Delete Category</h1>
+<div class="container py-5" style="max-width: 600px;">
 
-<p>Are you sure you want to delete "{{ category.name }}"?</p>
+    <h1 class="quick-access-title mb-4">Delete Category</h1>
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger btn-sm">Yes, delete</button>
-    <a href="{% url 'category_detail' category.pk %}" class="btn btn-primary btn-sm">Cancel</a>
-</form>
+    <div class="delete-box p-4 rounded shadow">
+        <p class="mb-4">
+            Are you sure you want to delete <strong>{{ category.name }}</strong>?
+        </p>
+
+        <form method="post" class="d-flex gap-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-green btn-lg">Yes, delete</button>
+            <a href="{% url 'category_detail' category.pk %}" class="btn btn-green btn-lg">Cancel</a>
+        </form>
+    </div>
+
+</div>
 {% endblock %}

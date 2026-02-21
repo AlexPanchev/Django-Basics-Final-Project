@@ -7,17 +7,17 @@
 {% block content %}
 <div class="container py-5" style="padding-top: 7rem;">
 
-    <div class="row g-5 dessert-detail-row">
+    <div class="dessert-detail-wrapper">
 
-        <div class="col-md-6">
+        <div class="dessert-detail-left">
             {% if dessert.image %}
-                <img src="{{ dessert.image.url }}" alt="{{ dessert.name }}" class="img-fluid rounded shadow">
+                <img src="{{ dessert.image.url }}" alt="{{ dessert.name }}" class="dessert-detail-img shadow">
             {% else %}
-                <img src="{% static 'img/no-image.jpg' %}" class="img-fluid rounded shadow" alt="No image">
+                <img src="{% static 'media/no-image.jpg' %}" class="dessert-detail-img shadow" alt="No image">
             {% endif %}
         </div>
 
-        <div class="col-md-6">
+        <div class="dessert-detail-right">
             <div class="dessert-details-box p-4 rounded shadow">
 
                 <h2 class="mb-3">{{ dessert.name }}</h2>
