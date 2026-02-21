@@ -22,6 +22,7 @@ class DessertForm(forms.ModelForm):
                 "rows": 4,
                 "placeholder": "Please enter Dessert Description",
             }),
+            "ingredients": forms.CheckboxSelectMultiple(),
         }
 
         error_messages = {

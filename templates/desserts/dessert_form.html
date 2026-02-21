@@ -3,11 +3,64 @@
 {% block title %}Dessert Form{% endblock %}
 
 {% block content %}
-<h1>Dessert Form</h1>
+<div class="container py-5" style="padding-top: 7rem;">
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary btn-sm">Save</button>
-</form>
+    <h1 class="text-center mb-4">Dessert Form</h1>
+
+    <div class="dessert-form-box p-4 rounded shadow mx-auto">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label class="form-label">Dessert Name:</label>
+                {{ form.name }}
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label class="form-label">Dessert Description:</label>
+                {{ form.description }}
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label class="form-label">Dessert Price (€):</label>
+                {{ form.price }}
+            </div>
+
+            <!-- Image -->
+            <div class="mb-3">
+                <label class="form-label">Dessert Image:</label>
+                {{ form.image }}
+            </div>
+
+            <!-- Availability -->
+            <div class="mb-3 form-check">
+                {{ form.is_available }}
+                <label class="form-check-label">Available</label>
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+                <label class="form-label">Dessert Category:</label>
+                {{ form.category }}
+            </div>
+
+            <!-- Ingredients -->
+            <div class="mb-3">
+                <label class="form-label">Ingredients Used:</label>
+                {{ form.ingredients }}
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-green btn-lg px-5">Save</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
 {% endblock %}

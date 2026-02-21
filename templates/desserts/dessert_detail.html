@@ -1,31 +1,53 @@
 {% extends "base.html" %}
+{% load static %}
 {% load dessert_filters %}
-
 
 {% block title %}{{ dessert.name }}{% endblock %}
 
 {% block content %}
-<h1>{{ dessert.name }}</h1>
+<div class="container py-5" style="padding-top: 7rem;">
 
-{% if dessert.image %}
-    <img src="{{ dessert.image.url }}" alt="{{ dessert.name }}" style="max-width: 300px;">
-{% endif %}
+    <div class="row g-5 dessert-detail-row">
 
-<p><strong>Description:</strong> {{ dessert.description }}</p>
-<p><strong>Price:</strong> {{ dessert.price|euro }} lv</p>
-<p><strong>Category:</strong> {{ dessert.category.name }}</p>
+        <div class="col-md-6">
+            {% if dessert.image %}
+                <img src="{{ dessert.image.url }}" alt="{{ dessert.name }}" class="img-fluid rounded shadow">
+            {% else %}
+                <img src="{% static 'img/no-image.jpg' %}" class="img-fluid rounded shadow" alt="No image">
+            {% endif %}
+        </div>
 
-<h3>Ingredients:</h3>
-<ul>
-    {% for ingredient in dessert.ingredients.all %}
-        <li>{{ ingredient.name }}</li>
-    {% empty %}
-        <li>No ingredients listed.</li>
-    {% endfor %}
-</ul>
+        <div class="col-md-6">
+            <div class="dessert-details-box p-4 rounded shadow">
 
-<p><strong>Available:</strong> {{ dessert.is_available|yesno:"Yes,No" }}</p>
+                <h2 class="mb-3">{{ dessert.name }}</h2>
 
-<a href="{% url 'dessert_edit' dessert.pk %}" class="btn btn-primary btn-sm">Edit</a> |
-<a href="{% url 'dessert_delete' dessert.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                <p><strong>Description:</strong> {{ dessert.description }}</p>
+
+                <p><strong>Price:</strong> {{ dessert.price|euro }}</p>
+
+                <p><strong>Category:</strong> {{ dessert.category.name }}</p>
+
+                <h4 class="mt-4">Ingredients:</h4>
+                <ul>
+                    {% for ingredient in dessert.ingredients.all %}
+                        <li>{{ ingredient.name }}</li>
+                    {% empty %}
+                        <li>No ingredients listed.</li>
+                    {% endfor %}
+                </ul>
+
+                <p class="mt-3"><strong>Available:</strong> {{ dessert.is_available|yesno:"Yes,No" }}</p>
+
+                <div class="mt-4 d-flex gap-3">
+                    <a href="{% url 'dessert_edit' dessert.pk %}" class="btn btn-green btn-lg">Edit</a>
+                    <a href="{% url 'dessert_delete' dessert.pk %}" class="btn btn-green btn-lg">Delete</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
 {% endblock %}

@@ -113,5 +113,175 @@ html, body {
     background-color: #e0cfbe !important;
 }
 
+main.container {
+    padding-top: 7rem;
+}
+
+.dessert-card-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+
+}
 
 
+.dessert-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background-color: #444a45 !important;
+    color: white;
+}
+
+.dessert-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+}
+
+.dessert-card .card-title,
+.dessert-card .card-text {
+    color: #e0cfbe !important;
+}
+
+.btn.btn-green {
+    background-color: #e0cfbe;
+    color: #2e2e2e;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.btn.btn-green:hover {
+    background-color: #d4c2b0;
+    color: #2e2e2e;
+    transform: translateY(-2px);
+}
+
+
+
+
+.pagination .page-link {
+    background-color: #444a45;
+    color: #e0cfbe;
+    border: none;
+    margin: 0 3px;
+    border-radius: 6px;
+}
+
+.pagination .page-link:hover {
+    background-color: #444a45;
+    color: #e0cfbe;
+}
+
+.pagination .active .page-link {
+    background-color: #444a45 !important;
+    color: #e0cfbe !important;
+}
+
+.dessert-details-box {
+    background-color: #444a45;
+    color: #e0cfbe;
+    border-radius: 12px;
+    height: 100%;
+
+
+}
+
+.dessert-details-box h2,
+.dessert-details-box h4,
+.dessert-details-box p,
+.dessert-details-box li,
+.dessert-details-box strong {
+    color: #e0cfbe !important;
+}
+
+.dessert-detail-row {
+    align-items: stretch;
+}
+
+.dessert-form-box {
+    max-width: 700px;
+    background-color: #444a45;
+    color: #e0cfbe;
+}
+
+.dessert-form-box label {
+    color: #e0cfbe !important;
+    font-weight: 500;
+}
+
+.dessert-form-box input,
+.dessert-form-box textarea,
+.dessert-form-box select {
+    background-color: #e0cfbe;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.dessert-form-box textarea {
+    min-height: 120px;
+}
+
+.dessert-form-box input:focus,
+.dessert-form-box textarea:focus,
+.dessert-form-box select:focus {
+    outline: 2px solid #d4c2b0;
+    background-color: #f3e8dc;
+}
+
+.dessert-form-box .checkbox {
+    margin-bottom: 6px;
+}
+.dessert-form-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.dessert-form-box li {
+    margin-bottom: 6px;
+}
+
+.dessert-form-box input[type="checkbox"] {
+    accent-color: #e0cfbe;
+}
+
+.dessert-form-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.dessert-form-box li {
+    margin-bottom: 8px;
+}
+
+.dessert-form-box li label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.dessert-form-box input[type="checkbox"] {
+    accent-color: #e0cfbe;
+    width: 18px;
+    height: 18px;
+}
+
+.delete-box {
+    max-width: 600px;
+    background-color: #444a45;
+    color: #e0cfbe;
+    border-radius: 12px;
+}
+
+.delete-box p,
+.delete-box strong {
+    color: #e0cfbe !important;
+}

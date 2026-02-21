@@ -2,13 +2,20 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import DessertForm, CategoryForm
 from .models import Dessert, Category
+from django.core.paginator import Paginator
+
 
 
 # Create your views here.
 
 def dessert_list(request):
     desserts = Dessert.objects.filter(is_available=True)
-    context = {"desserts": desserts}
+    paginator = Paginator(desserts, 8)
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    context = {"page_obj": page_obj}
     return render(request, "desserts/dessert_list.html", context)
 
 def dessert_detail(request, pk):

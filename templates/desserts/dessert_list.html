@@ -1,21 +1,72 @@
 {% extends "base.html" %}
-
-{% block title %}Desserts{% endblock %}
+{% load static %}
+{% load dessert_filters %}
 
 {% block content %}
-<h1>Desserts</h1>
+<div class="container py-5" >
 
-<ul>
-    {% for dessert in desserts %}
-        <li>
-            <a href="{% url 'dessert_detail' dessert.id %}" class="btn btn-primary btn-sm">
-                {{ dessert.name }} - {{ dessert.price }} lv
-            </a>
+    <!-- Page Title + Add Button -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="quick-access-title m-0">Our Desserts</h1>
+        <a href="{% url 'dessert_create' %}" class="btn btn-dark">Add Dessert</a>
+    </div>
+
+
+    <div class="row g-4">
+        {% for dessert in page_obj %}
+        <div class="col-md-4 col-lg-3">
+            <div class="card dessert-card h-100">
+
+                {% if dessert.image %}
+                    <img src="{{ dessert.image.url }}" class="dessert-card-img" alt="{{ dessert.name }}">
+                {% else %}
+                    <img src="{% static 'img/no-image.jpg' %}" class="dessert-card-img" alt="No image">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title" style="font-family: 'Playfair Display', serif;">
+                        {{ dessert.name }}
+                    </h5>
+
+                    <p class="card-text text-muted mb-2">
+                        {{ dessert.price|euro }}
+                    </p>
+
+                    <a href="{% url 'dessert_detail' dessert.pk %}" class="btn btn-green btn-lg ">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <p>No desserts available at the moment.</p>
+        {% endfor %}
+    </div>
+<nav aria-label="Dessert pagination" class="mt-5">
+    <ul class="pagination justify-content-center">
+
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
         </li>
-    {% empty %}
-        <li>No desserts available.</li>
-    {% endfor %}
+        {% endif %}
 
-    <a href="{% url 'dessert_create' %}" class="btn btn-primary btn-sm">Add Dessert</a>
-</ul>
+        {% for num in page_obj.paginator.page_range %}
+        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+</div>
 {% endblock %}

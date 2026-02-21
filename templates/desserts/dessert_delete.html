@@ -3,13 +3,24 @@
 {% block title %}Delete Dessert{% endblock %}
 
 {% block content %}
-<h1>Delete Dessert</h1>
+<div class="container py-5" style="padding-top: 7rem;">
 
-<p>Are you sure you want to delete "{{ dessert.name }}"?</p>
+    <h1 class="text-center mb-4">Delete Dessert</h1>
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger btn-sm">Yes, delete</button>
-    <a href="{% url 'dessert_detail' dessert.pk %} " class="btn btn-primary btn-sm">Cancel</a>
-</form>
+    <div class="delete-box p-4 rounded shadow mx-auto text-center">
+
+        <p class="mb-4">
+            Are you sure you want to delete 
+            <strong>"{{ dessert.name }}"</strong>?
+        </p>
+
+        <form method="post" class="d-flex justify-content-center gap-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-lg px-4">Yes, delete</button>
+            <a href="{% url 'dessert_detail' dessert.pk %}" class="btn btn-green btn-lg px-4">Cancel</a>
+        </form>
+
+    </div>
+
+</div>
 {% endblock %}
