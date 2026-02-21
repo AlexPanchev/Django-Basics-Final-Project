@@ -15,5 +15,7 @@
     {% empty %}
         <li>No desserts available.</li>
     {% endfor %}
+
+    <a href="{% url 'dessert_create' %}" class="btn btn-primary btn-sm">Add Dessert</a>
 </ul>
 {% endblock %}

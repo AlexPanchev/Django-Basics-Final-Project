@@ -10,10 +10,11 @@
 
     <header class="bg-light border-bottom mb-4">
         <nav class="container py-3">
+            <a href="{% url 'home' %}" class="me-3">Home</a>
             <a href="{% url 'dessert_list' %}" class="me-3">Desserts</a>
             <a href="{% url 'category_list' %}" class="me-3">Categories</a>
             <a href="{% url 'order_list' %}" class="me-3">Orders</a>
-            <a href="{% url 'dessert_create' %}" class="btn btn-primary btn-sm">Add Dessert</a>
+
         </nav>
     </header>
 
