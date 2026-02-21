@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h1>Create Order</h1>
+{% block title %}Order Form{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary btn-sm">Save Order</button>
-</form>
+{% block content %}
+<div class="container py-5" style="max-width: 700px;">
+
+    <h1 class="quick-access-title mb-4">Order Form</h1>
+
+    <div class="category-form-box p-4 rounded shadow">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-green btn-lg mt-3">Save Order</button>
+        </form>
+    </div>
+
+</div>
 {% endblock %}

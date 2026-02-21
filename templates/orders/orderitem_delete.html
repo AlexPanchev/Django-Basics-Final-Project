@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
+{% block title %}Delete Item{% endblock %}
+
 {% block content %}
-<h1>Delete Item</h1>
+<div class="container py-5" style="max-width: 600px;">
 
-<p>Are you sure you want to delete:</p>
+    <h1 class="quick-access-title mb-4">Delete Item</h1>
 
-<p>
-    {{ item.quantity }} × {{ item.dessert.name }}  
-    ({{ item.unit_price }} lv each)
-</p>
+    <div class="delete-box p-4 rounded shadow">
+        <p class="mb-4">Are you sure you want to delete:</p>
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger btn-sm">Yes, delete</button>
-    <a href="{% url 'order_detail' item.order.pk %}" class="btn btn-primary btn-sm">Cancel</a>
-</form>
+        <p><strong>{{ item.quantity }} × {{ item.dessert.name }}</strong><br>
+        {{ item.unit_price }} lv each</p>
+
+        <form method="post" class="d-flex gap-3 mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-green btn-lg">Yes, delete</button>
+            <a href="{% url 'order_detail' item.order.pk %}" class="btn btn-green btn-lg">Cancel</a>
+        </form>
+    </div>
+
+</div>
 {% endblock %}
