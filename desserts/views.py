@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import DessertForm
-from .models import Dessert
+from .forms import DessertForm, CategoryForm
+from .models import Dessert, Category
+
+
 # Create your views here.
 
 def dessert_list(request):
@@ -49,3 +51,55 @@ def dessert_delete(request, pk):
 
     context = {"dessert": dessert}
     return render(request, "desserts/dessert_delete.html", context)
+
+def category_list(request):
+    categories = Category.objects.all()
+    context = {"categories": categories}
+    return render(request, "categories/category_list.html", context)
+
+def category_detail(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    context = {"category": category}
+    return render(request, "categories/category_detail.html", context)
+
+def category_create(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("category_list")
+    else:
+        form = CategoryForm()
+
+    context = {"form": form}
+    return render(request, "categories/category_form.html", context)
+
+def category_update(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+
+    if request.method == "POST":
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect("category_detail", pk=category.pk)
+    else:
+        form = CategoryForm(instance=category)
+
+    context = {
+        "form": form,
+        "category": category
+    }
+
+    return render(request, "categories/category_form.html", context)
+
+def category_delete(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+
+    if request.method == "POST":
+        category.delete()
+        return redirect("category_list")
+
+
+    context = {"category": category}
+
+    return render(request, "categories/category_delete.html", context)
