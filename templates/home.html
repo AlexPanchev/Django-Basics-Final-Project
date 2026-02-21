@@ -3,32 +3,39 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-<div class="text-center py-5">
 
-    <h1 class="display-4 mb-4">Welcome to the Dessert Shop</h1>
-    <p class="lead mb-5">
-        Manage desserts, categories, and customer orders — all in one place.
-    </p>
+<div class="hero-banner d-flex align-items-center justify-content-center text-center">
+    <div class="p-5 rounded" style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(4px);">
+        <h1 class="display-4 fw-bold mb-3" style="letter-spacing: 2px;">Welcome to the Dessert Shop</h1>
+        <p class="lead mb-4">Manage desserts, categories, and customer orders with ease.</p>
+
+        <a href="{% url 'dessert_list' %}" class="btn btn-dark btn-lg me-2">Browse Desserts</a>
+        <a href="{% url 'order_list' %}" class="btn btn-outline-dark btn-lg">View Orders</a>
+    </div>
+</div>
+
+<div class="container quick-access-section">
+    <h2 class="quick-access-title">Quick Access</h2>
 
     <div class="row justify-content-center">
         <div class="col-md-3 mb-3">
-            <a href="{% url 'dessert_list' %}" class="btn btn-primary btn-lg w-100">
-                View Desserts
+            <a href="{% url 'dessert_list' %}" class="btn btn-dark btn-lg w-100 py-3">
+                Desserts
             </a>
         </div>
 
         <div class="col-md-3 mb-3">
-            <a href="{% url 'category_list' %}" class="btn btn-secondary btn-lg w-100">
-                View Categories
+            <a href="{% url 'category_list' %}" class="btn btn-dark btn-lg w-100 py-3">
+                Categories
             </a>
         </div>
 
         <div class="col-md-3 mb-3">
-            <a href="{% url 'order_list' %}" class="btn btn-success btn-lg w-100">
-                View Orders
+            <a href="{% url 'order_list' %}" class="btn btn-dark btn-lg w-100 py-3">
+                Orders
             </a>
         </div>
     </div>
-
 </div>
+
 {% endblock %}
