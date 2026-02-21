@@ -32,7 +32,7 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div>
                     <strong>{{ item.quantity }} × {{ item.dessert.name }}</strong><br>
-                    {{ item.unit_price }} lv each
+                    {{ item.unit_price }} eur each
                 </div>
 
                 <div class="d-flex gap-2">
@@ -45,7 +45,7 @@
         {% endfor %}
     </div>
 
-    <h3 class="mb-4"><strong>Total:</strong> {{ order.total_price }} lv</h3>
+    <h3 class="mb-4"><strong>Total:</strong> {{ order.total_price }} eur</h3>
 
     <a href="{% url 'orderitem_create' order.pk %}" class="btn btn-green btn-lg">Add Item</a>
 
